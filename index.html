@@ -11,15 +11,15 @@
 <style>
   /* ============ THEME (edit these to recolor everything) ============ */
   :root{
-    --bg:#070812;
+    --bg:#0b0a09;
     --panel:rgba(255,255,255,.04);
-    --panel-brd:rgba(255,255,255,.09);
-    --txt:#e7e9f5;
-    --muted:#9aa0be;
-    --accent:#6c5ce7;     /* violet */
-    --accent-2:#00e5ff;   /* cyan   */
-    --accent-3:#ff4ecd;   /* magenta */
-    --glow:0 0 40px rgba(108,92,231,.35);
+    --panel-brd:rgba(212,175,55,.16);
+    --txt:#f2ece0;
+    --muted:#b4a88f;
+    --accent:#cc3333;     /* persian red */
+    --accent-2:#d4af37;   /* gold        */
+    --accent-3:#e8c65a;   /* light gold  */
+    --glow:0 0 40px rgba(212,175,55,.35);
     --maxw:1120px;
     --font:'Space Grotesk',system-ui,sans-serif;
     --font-body:'Inter',system-ui,sans-serif;
@@ -30,9 +30,9 @@
   body::before{
     content:"";position:fixed;inset:0;z-index:-2;
     background:
-      radial-gradient(50% 40% at 15% 10%, rgba(108,92,231,.25), transparent 60%),
-      radial-gradient(45% 45% at 85% 20%, rgba(0,229,255,.16), transparent 60%),
-      radial-gradient(50% 50% at 50% 100%, rgba(255,78,205,.14), transparent 60%),
+      radial-gradient(50% 40% at 15% 10%, rgba(204,51,51,.22), transparent 60%),
+      radial-gradient(45% 45% at 85% 20%, rgba(212,175,55,.18), transparent 60%),
+      radial-gradient(50% 50% at 50% 100%, rgba(204,51,51,.14), transparent 60%),
       var(--bg);
     animation:drift 18s ease-in-out infinite alternate;
   }
@@ -61,7 +61,7 @@
 
   /* ============ HERO ============ */
   .hero{min-height:100vh;display:flex;align-items:center;position:relative;padding-top:90px}
-  .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center;width:100%}
+  .hero-grid{display:grid;grid-template-columns:1fr .9fr;gap:48px;align-items:center;width:100%}
   .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--panel-brd);background:var(--panel);padding:8px 16px;border-radius:999px;margin-bottom:26px}
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 12px var(--accent-2);animation:pulse 1.8s infinite}
   @keyframes pulse{50%{opacity:.35}}
@@ -76,7 +76,8 @@
   .btn-ghost{background:var(--panel);border-color:var(--panel-brd);color:var(--txt)}
   .btn-ghost:hover{border-color:var(--accent-2);color:var(--accent-2)}
   .hero-photo{position:relative;justify-self:center}
-  .hero-photo img{width:100%;max-width:360px;border-radius:20px;border:1px solid var(--panel-brd);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .hero-photo{width:100%}
+  .hero-photo img{width:100%;max-width:480px;border-radius:20px;border:1px solid var(--panel-brd);box-shadow:0 20px 60px rgba(0,0,0,.5)}
   .hero-photo::after{content:"";position:absolute;inset:-2px;border-radius:22px;background:linear-gradient(135deg,var(--accent-2),transparent 45%,transparent 55%,var(--accent-3));z-index:-1;filter:blur(6px);opacity:.6}
 
   /* ============ SECTIONS ============ */
@@ -424,11 +425,11 @@
       d.x+=d.vx; d.y+=d.vy;
       if(d.x<0||d.x>w) d.vx*=-1;
       if(d.y<0||d.y>h) d.vy*=-1;
-      ctx.beginPath(); ctx.arc(d.x,d.y,d.r,0,7); ctx.fillStyle='rgba(160,180,255,.5)'; ctx.fill();
+      ctx.beginPath(); ctx.arc(d.x,d.y,d.r,0,7); ctx.fillStyle='rgba(212,175,55,.55)'; ctx.fill();
     }
     for(let i=0;i<dots.length;i++)for(let j=i+1;j<dots.length;j++){
       const a=dots[i],b=dots[j],dx=a.x-b.x,dy=a.y-b.y,dist=dx*dx+dy*dy;
-      if(dist<9000){ ctx.strokeStyle='rgba(108,92,231,'+(.12*(1-dist/9000))+')'; ctx.lineWidth=1;
+      if(dist<9000){ ctx.strokeStyle='rgba(204,51,51,'+(.14*(1-dist/9000))+')'; ctx.lineWidth=1;
         ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
     }
     raf=requestAnimationFrame(loop);
