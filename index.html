@@ -114,9 +114,16 @@
   .skill-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:40px}
   .skill-cols h3{font-size:1rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent-2);margin-bottom:16px}
   .skill-cols li{list-style:none;color:var(--muted);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05)}
-  .chips{display:flex;flex-wrap:wrap;gap:12px}
-  .chip{padding:10px 18px;border-radius:999px;background:var(--panel);border:1px solid var(--panel-brd);font-size:.9rem;transition:.2s;cursor:default}
-  .chip:hover{border-color:var(--accent-2);color:var(--accent-2);transform:translateY(-2px)}
+  .bars{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 40px}
+  .bar label{display:flex;justify-content:space-between;font-family:var(--font);font-weight:600;font-size:.92rem;margin-bottom:8px}
+  .bar label em{font-style:normal;color:var(--accent-2)}
+  .bar i{display:block;height:14px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--panel-brd);overflow:hidden;position:relative}
+  .bar i::before{content:"";position:absolute;top:0;left:0;bottom:0;width:0;border-radius:999px;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--accent-3),var(--accent-2),var(--accent));
+    background-size:200% 100%;box-shadow:0 0 16px rgba(212,175,55,.55);
+    animation:flow 3s linear infinite;transition:width 1.3s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in .bar i::before{width:var(--lvl)}
+  @keyframes flow{to{background-position:200% 0}}
 
   /* PROJECTS */
   .tabs{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
@@ -158,7 +165,7 @@
     .burger{display:flex}
     .hero-grid{grid-template-columns:1fr;gap:36px}
     .hero-photo{order:-1}
-    .about-grid,.grid-3,.grid-2,.skill-cols{grid-template-columns:1fr}
+    .about-grid,.grid-3,.grid-2,.skill-cols,.bars{grid-template-columns:1fr}
   }
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
@@ -263,15 +270,15 @@
         <li>Branding</li><li>UI / UX</li><li>Layout</li><li>Typography</li>
       </ul></div>
     </div>
-    <div class="chips reveal">
-      <span class="chip">Photoshop</span>
-      <span class="chip">Illustrator</span>
-      <span class="chip">InDesign</span>
-      <span class="chip">Premiere Pro</span>
-      <span class="chip">Figma</span>
-      <span class="chip">HTML5 / CSS</span>
-      <span class="chip">Flutter</span>
-      <span class="chip">PHP</span>
+    <div class="bars reveal">
+      <div class="bar" style="--lvl:85%"><label>Photoshop<em>85%</em></label><i></i></div>
+      <div class="bar" style="--lvl:75%"><label>Illustrator<em>75%</em></label><i></i></div>
+      <div class="bar" style="--lvl:80%"><label>InDesign<em>80%</em></label><i></i></div>
+      <div class="bar" style="--lvl:65%"><label>Premiere Pro<em>65%</em></label><i></i></div>
+      <div class="bar" style="--lvl:90%"><label>Figma<em>90%</em></label><i></i></div>
+      <div class="bar" style="--lvl:95%"><label>HTML5 / CSS<em>95%</em></label><i></i></div>
+      <div class="bar" style="--lvl:80%"><label>Flutter<em>80%</em></label><i></i></div>
+      <div class="bar" style="--lvl:88%"><label>PHP<em>88%</em></label><i></i></div>
     </div>
   </div>
 </section>
